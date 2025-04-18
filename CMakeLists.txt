@@ -30,19 +30,15 @@ add_subdirectory(vendor/glfw3.4)
 add_executable("${CMAKE_PROJECT_NAME}")
 
 # project configuration properties
-set_target_properties(
-    "${CMAKE_PROJECT_NAME}"
-    PROPERTIES
-    CMAKE_CXX_STANDARD 23
-    CMAKE_CXX_STANDARD_REQUIRED ON
-    CMAKE_CXX_EXTENSIONS OFF
-)
+set_property(TARGET "${CMAKE_PROJECT_NAME}" PROPERTY CXX_STANDARD 23)
+set_property(TARGET "${CMAKE_PROJECT_NAME}" PROPERTY CMAKE_CXX_STANDARD_REQUIRED ON)
+set_property(TARGET "${CMAKE_PROJECT_NAME}" PROPERTY CMAKE_CXX_EXTENSIONS OFF)
 
 # project source files
 target_sources(
     "${CMAKE_PROJECT_NAME}"
     PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Hello.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/Crash.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp"
 )
 
