@@ -5,6 +5,9 @@ project(gltk_demo
     LANGUAGES CXX
 )
 
+# subdirectories
+add_subdirectory(vendor/glad3.3) # for opengl3.3 core
+
 # project executable
 add_executable("${CMAKE_PROJECT_NAME}")
 
@@ -33,10 +36,11 @@ target_include_directories(
 )
 
 # project libraries
-#target_link_libraries(
-#    "${CMAKE_PROJECT_NAME}"
-#    PRIVATE
-#)
+target_link_libraries(
+    "${CMAKE_PROJECT_NAME}"
+    PRIVATE
+    glad3.3
+)
 
 # warnings
 target_compile_options(
