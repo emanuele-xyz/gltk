@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <stb_image.h>
+#include <tiny_gltf.h>
 
 #include <iostream>
 
@@ -29,9 +30,13 @@ int main()
     try
     {
         glm::vec3 vec{};
-
-        gltk_Check(false);
-        gltk_Crash("wow");
+        {
+            int w{};
+            int h{};
+            int channels{};
+            stbi_load("wow", &w, &h, &channels, 4);
+        }
+        tinygltf::Scene scene{};
 
         glfwInit();
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

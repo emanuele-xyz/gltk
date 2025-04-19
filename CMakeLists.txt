@@ -27,6 +27,16 @@ add_subdirectory(vendor/glfw3.4)
 # stb
 add_subdirectory(vendor/stb2.30)
 
+# tinygltf
+set(TINYGLTF_BUILD_LOADER_EXAMPLE OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_BUILD_GL_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_BUILD_VALIDATOR_EXAMPLE OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_BUILD_BUILDER_EXAMPLE OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_HEADER_ONLY OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_INSTALL OFF CACHE BOOL "" FORCE)
+set(TINYGLTF_INSTALL_VENDOR OFF CACHE BOOL "" FORCE)
+add_subdirectory(vendor/tinygltf2.9.5)
+
 # -----------------------------------------------------------------------------
 # project
 # -----------------------------------------------------------------------------
@@ -57,6 +67,7 @@ target_include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw3.4/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm1.0.1/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb2.30/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/vendor/tinygltf2.9.5/include"
 )
 
 # project libraries
@@ -66,6 +77,7 @@ target_link_libraries(
     glad3.3
     glfw
     stb
+    tinygltf
 )
 
 # warnings
