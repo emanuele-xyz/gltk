@@ -52,6 +52,7 @@ target_include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad3.3/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw3.4/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm1.0.1/include"
 )
 
 # project libraries

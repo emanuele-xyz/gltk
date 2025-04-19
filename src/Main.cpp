@@ -1,5 +1,6 @@
 #include <glad/glad.h> // NOTE: before glfw
 #include <GLFW/glfw3.h>
+#include <glm/glm.hpp>
 
 #include <iostream>
 
@@ -26,6 +27,8 @@ int main()
 {
     try
     {
+        glm::vec3 vec{};
+
         gltk_Check(false);
         gltk_Crash("wow");
 
