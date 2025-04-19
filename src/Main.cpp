@@ -3,18 +3,18 @@
 
 #include <iostream>
 
-#include <gltk/Crash.h>
+#include <gltk/GLTK.h>
 
-constexpr const char *WINDOW_TITLE{"gltk"};
-constexpr int WINDOW_W{1280};
-constexpr int WINDOW_H{720};
+constexpr const char* WINDOW_TITLE{ "gltk" };
+constexpr int WINDOW_W{ 1280 };
+constexpr int WINDOW_H{ 720 };
 
-static void FramebufferSizeCallback(GLFWwindow *, int width, int height)
+static void FramebufferSizeCallback(GLFWwindow*, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
 
-static void ProcessInput(GLFWwindow *window)
+static void ProcessInput(GLFWwindow* window)
 {
     if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
     {
@@ -26,18 +26,19 @@ int main()
 {
     try
     {
-        throw gltk::Error{__FILE__, __LINE__, "Wow"};
+        gltk_Check(false);
+        gltk_Crash("wow");
 
         glfwInit();
         glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-#ifdef __APPLE__
+        #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
+        #endif
 
-        GLFWwindow *window{glfwCreateWindow(WINDOW_W, WINDOW_H, WINDOW_TITLE, nullptr, nullptr)};
+        GLFWwindow* window{ glfwCreateWindow(WINDOW_W, WINDOW_H, WINDOW_TITLE, nullptr, nullptr) };
         if (!window)
         {
             std::cout << "Failed to create GLFW window" << std::endl;
@@ -66,7 +67,7 @@ int main()
 
         glfwTerminate();
     }
-    catch (const gltk::Error &e)
+    catch (const gltk::Crash& e)
     {
         std::cerr << e.What() << '\n';
     }

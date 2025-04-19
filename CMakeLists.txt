@@ -38,9 +38,12 @@ set_property(TARGET "${CMAKE_PROJECT_NAME}" PROPERTY CMAKE_CXX_EXTENSIONS OFF)
 target_sources(
     "${CMAKE_PROJECT_NAME}"
     PRIVATE
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/Crash.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/gltk/Crash.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp"
-)
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/gltk/GLTK.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/gltk/Crash.h"
+    "${CMAKE_CURRENT_SOURCE_DIR}/include/gltk/Check.h"
+ )
 
 # project include directories
 target_include_directories(
