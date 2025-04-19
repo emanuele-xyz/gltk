@@ -1,6 +1,7 @@
 #include <glad/glad.h> // NOTE: before glfw
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
+#include <stb_image.h>
 
 #include <iostream>
 

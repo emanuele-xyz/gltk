@@ -24,6 +24,9 @@ set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 add_subdirectory(vendor/glfw3.4)
 
+# stb
+add_subdirectory(vendor/stb2.30)
+
 # -----------------------------------------------------------------------------
 # project
 # -----------------------------------------------------------------------------
@@ -43,7 +46,7 @@ target_sources(
     "${CMAKE_CURRENT_SOURCE_DIR}/include/gltk/GLTK.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/include/gltk/Crash.h"
     "${CMAKE_CURRENT_SOURCE_DIR}/include/gltk/Check.h"
- )
+)
 
 # project include directories
 target_include_directories(
@@ -53,6 +56,7 @@ target_include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glad3.3/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw3.4/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm1.0.1/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb2.30/include"
 )
 
 # project libraries
@@ -61,6 +65,7 @@ target_link_libraries(
     PRIVATE
     glad3.3
     glfw
+    stb
 )
 
 # warnings
