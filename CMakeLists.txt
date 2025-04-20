@@ -55,6 +55,7 @@ target_sources(
     "${CMAKE_PROJECT_NAME}"
     PRIVATE
     "${CMAKE_CURRENT_SOURCE_DIR}/src/gltk/Crash.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/gltk/GLCheck.cpp"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp"
 )
 

@@ -22,7 +22,7 @@ static void OnGLFWError(int error, const char* description)
 }
 static void OnGLFWResize(GLFWwindow*, int width, int height)
 {
-    glViewport(0, 0, width, height);
+    gltk_GLCheck(glViewport(0, 0, width, height));
 }
 
 int main()
@@ -125,8 +125,8 @@ int main()
 
             // render
             {
-                glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
-                glClear(GL_COLOR_BUFFER_BIT);
+                gltk_GLCheck(glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w));
+                gltk_GLCheck(glClear(GL_COLOR_BUFFER_BIT));
             }
 
             // render ui
