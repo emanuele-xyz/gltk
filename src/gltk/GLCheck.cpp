@@ -21,7 +21,7 @@ namespace gltk
             case GL_OUT_OF_MEMORY: { error = "GL_OUT_OF_MEMORY"; } break;
             case GL_INVALID_FRAMEBUFFER_OPERATION: { error = "GL_INVALID_FRAMEBUFFER_OPERATION"; } break;
             }
-            std::cout << std::format("[GL]:{}({}): {}\n", file, line, error);
+            std::cerr << std::format("[GL]:{}({}): {}\n", file, line, error);
         }
     }
 }
