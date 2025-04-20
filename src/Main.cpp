@@ -12,15 +12,15 @@
 #include <iostream>
 #include <format>
 
-constexpr const char *WINDOW_TITLE{"gltk"};
-constexpr int WINDOW_W{1280};
-constexpr int WINDOW_H{720};
+constexpr const char* WINDOW_TITLE{ "gltk" };
+constexpr int WINDOW_W{ 1280 };
+constexpr int WINDOW_H{ 720 };
 
-static void OnGLFWError(int error, const char *description)
+static void OnGLFWError(int error, const char* description)
 {
     std::cerr << std::format("[GLFW({})]: {}\n", error, description);
 }
-static void OnGLFWResize(GLFWwindow *, int width, int height)
+static void OnGLFWResize(GLFWwindow*, int width, int height)
 {
     glViewport(0, 0, width, height);
 }
@@ -54,11 +54,11 @@ int main()
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-#ifdef __APPLE__
+        #ifdef __APPLE__
         glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-#endif
+        #endif
 
-        GLFWwindow *window{glfwCreateWindow(WINDOW_W, WINDOW_H, WINDOW_TITLE, nullptr, nullptr)};
+        GLFWwindow* window{ glfwCreateWindow(WINDOW_W, WINDOW_H, WINDOW_TITLE, nullptr, nullptr) };
         if (!window)
         {
             std::cout << "Failed to create GLFW window" << std::endl;
@@ -84,7 +84,7 @@ int main()
 
         // Setup Platform/Renderer backends
         {
-            constexpr const char *IMGUI_GLSL_VERSION{"#version 130"};
+            constexpr const char* IMGUI_GLSL_VERSION{ "#version 130" };
             ImGui_ImplGlfw_InitForOpenGL(window, true);
             ImGui_ImplOpenGL3_Init(IMGUI_GLSL_VERSION);
         }
@@ -107,9 +107,9 @@ int main()
         // IM_ASSERT(font != nullptr);
 
         // ui state
-        bool show_demo_window{true};
-        bool show_another_window{false};
-        ImVec4 clear_color{0.45f, 0.55f, 0.60f, 1.00f};
+        bool show_demo_window{ true };
+        bool show_another_window{ false };
+        ImVec4 clear_color{ 0.45f, 0.55f, 0.60f, 1.00f };
 
         while (!glfwWindowShouldClose(window))
         {
@@ -154,7 +154,7 @@ int main()
                     ImGui::Checkbox("Another Window", &show_another_window);
 
                     ImGui::SliderFloat("float", &f, 0.0f, 1.0f);             // Edit 1 float using a slider from 0.0f to 1.0f
-                    ImGui::ColorEdit3("clear color", (float *)&clear_color); // Edit 3 floats representing a color
+                    ImGui::ColorEdit3("clear color", (float*)&clear_color); // Edit 3 floats representing a color
 
                     if (ImGui::Button("Button")) // Buttons return true when clicked (most widgets return true when edited/activated)
                     {
@@ -203,7 +203,7 @@ int main()
             glfwTerminate();
         }
     }
-    catch (const gltk::Crash &e)
+    catch (const gltk::Crash& e)
     {
         std::cerr << e.What() << '\n';
     }
