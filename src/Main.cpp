@@ -18,6 +18,24 @@ constexpr int WINDOW_W{ 1280 };
 constexpr int WINDOW_H{ 720 };
 constexpr const char* IMGUI_GLSL_VERSION{ "#version 130" };
 
+// TODO: load these from files
+constexpr const char* VERTEX_SHADER_SOURCE{
+    "#version 330 core\n"
+    "layout (location = 0) in vec3 aPos;\n"
+    "void main()\n"
+    "{\n"
+    "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+    "}\0"
+};
+constexpr const char* FRAGMENT_SHADER_SOURCE{
+    "#version 330 core\n"
+    "out vec4 FragColor;\n"
+    "void main()\n"
+    "{\n"
+    "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
+    "}\n\0"
+};
+
 static void OnGLFWError(int error, const char* description)
 {
     std::cerr << std::format("[GLFW({})]: {}\n", error, description);
@@ -143,6 +161,22 @@ int main()
         auto shutdown_imgui_glfw_impl_on_exit{ sg::make_scope_guard([]() { ImGui_ImplGlfw_Shutdown();}) };
         gltk_Check(ImGui_ImplOpenGL3_Init(IMGUI_GLSL_VERSION));
         auto shutdown_imgui_opengl_impl_on_exit{ sg::make_scope_guard([]() { ImGui_ImplOpenGL3_Shutdown(); }) };
+
+        // build shaders
+        gltk::ProgramBuilder program_builder{};
+        if (!program_builder.Compile(GL_VERTEX_SHADER, VERTEX_SHADER_SOURCE))
+        {
+            std::cerr << std::format("[GLTK]: {}\n", program_builder.InfoLog());
+        }
+        if (!program_builder.Compile(GL_FRAGMENT_SHADER, FRAGMENT_SHADER_SOURCE))
+        {
+            std::cerr << std::format("[GLTK]: {}\n", program_builder.InfoLog());
+        }
+        GLuint shader_program{ program_builder.Link() };
+        if (!shader_program)
+        {
+            std::cerr << std::format("[GLTK]: {}\n", program_builder.InfoLog());
+        }
 
         while (!glfwWindowShouldClose(window))
         {

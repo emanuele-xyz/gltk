@@ -3,6 +3,7 @@
 #include <string>
 
 #define gltk_Crash(msg) do { ::gltk::TryDebugBreak(); throw ::gltk::Crash{ __FILE__, __LINE__, msg }; } while (false)
+#define gltk_Unreachable() gltk_Crash("unreachable code path")
 
 namespace gltk
 {
