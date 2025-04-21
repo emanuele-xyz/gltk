@@ -68,6 +68,7 @@ target_include_directories(
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glfw3.4/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/glm1.0.1/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/imgui1.91.9b/include"
+    "${CMAKE_CURRENT_SOURCE_DIR}/vendor/scope_guard1.1.0/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/stb2.30/include"
     "${CMAKE_CURRENT_SOURCE_DIR}/vendor/tinygltf2.9.5/include"
 )
